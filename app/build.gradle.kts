@@ -1,4 +1,4 @@
-plugins {
+    plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
 }
@@ -32,6 +32,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+
+    buildFeatures{
+        viewBinding = true
     }
 }
 
