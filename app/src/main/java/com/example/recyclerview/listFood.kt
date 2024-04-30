@@ -7,27 +7,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.recyclerview.databinding.ActivityListFoodBinding
+import com.example.recyclerview.databinding.ActivityMainBinding
 
 class listFood : AppCompatActivity() {
 
-    private lateinit var foodName: TextView
-    private lateinit var foodImg: ImageView
-    private lateinit var foodDes: TextView
+    private lateinit var binding: ActivityListFoodBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityListFoodBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_food)
-
-        foodName = findViewById(R.id.foodName)
-        foodImg = findViewById(R.id.foodImg)
-        foodDes = findViewById(R.id.sFoodDetalis)
+        setContentView(binding.root)
 
         var name = intent.getStringExtra("name")
         var img = intent.getIntExtra("image", R.drawable.pizza)
-        var desc = intent.getStringExtra("longdesc")
+        var desc = intent.getStringExtra("details")
 
-        foodDes.text = desc
-        foodName.text = name
-        foodImg.setImageResource(img)
+        binding.foodName.text = name.toString()
+        binding.foodDetalis.text = desc.toString()
+        binding.foodImg.setImageResource(img)
     }
 }

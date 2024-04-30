@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.databinding.ItemListBinding
 
 class foodAdapter(private val foodList:ArrayList<foods>):RecyclerView.Adapter<foodAdapter.MyViewHolder>()  {
+
+
+    var onclick :((foods)-> Unit)? = null
     class MyViewHolder(val binding: ItemListBinding):RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -25,8 +28,10 @@ class foodAdapter(private val foodList:ArrayList<foods>):RecyclerView.Adapter<fo
             foodName.text = food.foodName
             foodDetails.text = food.foodDetails
             foodImg.setImageResource(food.foodImage)
-
             }
+
+        holder.itemView.setOnClickListener{
+            onclick?.invoke(food)
         }
     }
 }
